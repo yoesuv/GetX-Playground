@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:my_getx_playground/src/ui/counter_screen.dart';
+import 'package:my_getx_playground/src/menu/counter/counter_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,11 +19,20 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                const SizedBox(height: 24),
                 MaterialButton(
+                  minWidth: 250,
+                  color: Colors.teal,
                   onPressed: () {
                     Get.toNamed(CounterScreen.routeName);
                   },
-                  child: Text('Counter'),
+                  child: const Text(
+                    'Counter',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
                 ),
               ],
             ),
