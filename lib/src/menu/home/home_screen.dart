@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:my_getx_playground/src/menu/counter/counter_screen.dart';
+import 'package:my_getx_playground/src/menu/form/form_screen.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,7 +34,9 @@ class HomeScreen extends StatelessWidget {
                 Center(
                   child: MyButton(
                     label: 'Form & Arguments',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(FormScreen.routeName);
+                    },
                   ),
                 ),
               ],
