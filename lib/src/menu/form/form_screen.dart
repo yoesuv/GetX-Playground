@@ -21,10 +21,7 @@ class FormScreen extends GetView<FormController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              TextFormField(
-                controller: controller.emailController,
-                decoration: const InputDecoration(labelText: 'E-mail'),
-              ),
+              _textFieldEmail(),
               const SizedBox(height: 12),
             ],
           ),
@@ -36,6 +33,21 @@ class FormScreen extends GetView<FormController> {
           label: 'Submit',
           onPressed: () {},
         ),
+      ),
+    );
+  }
+
+  Widget _textFieldEmail() {
+    return Obx(
+      () => TextField(
+        controller: controller.emailController,
+        decoration: InputDecoration(
+          labelText: 'Email Address',
+          hintText: 'youremail@mail.com',
+          errorText: controller.emailError.value,
+        ),
+        onChanged: (value) => controller.validateEmail(value),
+        keyboardType: TextInputType.emailAddress,
       ),
     );
   }
