@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_getx_playground/src/menu/form/form_result_controller.dart';
 
-class FormResultScreen extends StatelessWidget {
+class FormResultScreen extends GetView<FormResultController> {
   static const routeName = '/form_result';
   const FormResultScreen({Key? key}) : super(key: key);
 
@@ -17,14 +19,30 @@ class FormResultScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 24),
-              Text('Full Name'),
-              SizedBox(height: 12),
-              Text('Email'),
+              const SizedBox(height: 24),
+              const Text(
+                'Full Name :',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 6),
+              _textFullNameValue(),
+              const SizedBox(height: 12),
+              const Text(
+                'Email : ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget _textFullNameValue() {
+    return Text('full name value');
   }
 }

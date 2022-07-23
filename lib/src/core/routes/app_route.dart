@@ -23,5 +23,6 @@ final List<GetPage> appRoute = [
   GetPage(
     name: FormResultScreen.routeName,
     page: () => const FormResultScreen(),
+    binding: FormResultBinding(),
   ),
 ];
