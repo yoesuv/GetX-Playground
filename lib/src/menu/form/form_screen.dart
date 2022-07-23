@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/src/menu/form/form_controller.dart';
+import 'package:my_getx_playground/src/menu/form/form_result_screen.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
 
 class FormScreen extends GetView<FormController> {
@@ -72,7 +73,9 @@ class FormScreen extends GetView<FormController> {
           height: 45,
           isEnabled: controller.isFormValid.value,
           label: 'Submit',
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(FormResultScreen.routeName);
+          },
         ),
       ),
     );
