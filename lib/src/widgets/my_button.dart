@@ -4,12 +4,14 @@ class MyButton extends StatelessWidget {
   final String label;
   final double? height;
   final Function? onPressed;
+  final bool isEnabled;
 
   const MyButton({
     Key? key,
     required this.label,
     this.height = 40,
     this.onPressed,
+    this.isEnabled = true,
   }) : super(key: key);
 
   @override
@@ -18,11 +20,12 @@ class MyButton extends StatelessWidget {
       height: height,
       minWidth: 250,
       color: Colors.teal,
-      onPressed: () {
+      disabledColor: Colors.grey,
+      onPressed: isEnabled ? () {
         if (onPressed != null) {
           onPressed!();
         }
-      },
+      } : null,
       child: Text(
         label,
         style: const TextStyle(

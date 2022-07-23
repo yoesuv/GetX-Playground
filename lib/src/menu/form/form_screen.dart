@@ -28,13 +28,7 @@ class FormScreen extends GetView<FormController> {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 24, right: 24, bottom: 12),
-        child: MyButton(
-          label: 'Submit',
-          onPressed: () {},
-        ),
-      ),
+      bottomNavigationBar: _buttonSubmit(),
     );
   }
 
@@ -66,6 +60,20 @@ class FormScreen extends GetView<FormController> {
         onChanged: (value) => controller.validateEmail(value),
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.done,
+      ),
+    );
+  }
+
+  Widget _buttonSubmit() {
+    return Obx(
+      () => Padding(
+        padding: const EdgeInsets.only(left: 24, right: 24, bottom: 12),
+        child: MyButton(
+          height: 45,
+          isEnabled: controller.isFormValid.value,
+          label: 'Submit',
+          onPressed: () {},
+        ),
       ),
     );
   }

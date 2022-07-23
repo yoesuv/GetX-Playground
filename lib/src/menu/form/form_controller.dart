@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FormController extends GetxController {
-  final emailController = TextEditingController();
   final fullNameController = TextEditingController();
+  final emailController = TextEditingController();
 
-  var emailError = Rx<String?>(null);
   var fullNameError = Rx<String?>(null);
+  var emailError = Rx<String?>(null);
+
+  bool isFullNameValid = false;
+  bool isEmailValid = false;
+  var isFormValid = false.obs;
 
   void validateFullName(String value) {
     if (value.isEmpty) {
@@ -18,6 +22,8 @@ class FormController extends GetxController {
     } else {
       fullNameError.value = null;
     }
+    isFullNameValid = fullNameError.value == null;
+    validateButton();
   }
 
   void validateEmail(String value) {
@@ -28,6 +34,12 @@ class FormController extends GetxController {
     } else {
       emailError.value = null;
     }
+    isEmailValid = emailError.value == null;
+    validateButton();
+  }
+
+  void validateButton() {
+    isFormValid.value = isFullNameValid && isEmailValid;
   }
 
   @override
