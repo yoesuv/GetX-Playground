@@ -21,8 +21,9 @@ class FormScreen extends GetView<FormController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              _textFieldEmail(),
+              _textFieldFullName(),
               const SizedBox(height: 12),
+              _textFieldEmail(),
             ],
           ),
         ),
@@ -33,6 +34,22 @@ class FormScreen extends GetView<FormController> {
           label: 'Submit',
           onPressed: () {},
         ),
+      ),
+    );
+  }
+
+  Widget _textFieldFullName() {
+    return Obx(
+      () => TextField(
+        controller: controller.fullNameController,
+        decoration: InputDecoration(
+          labelText: 'Full Name',
+          hintText: 'your full name',
+          errorText: controller.fullNameError.value,
+        ),
+        onChanged: (value) => controller.validateFullName(value),
+        keyboardType: TextInputType.name,
+        textInputAction: TextInputAction.next,
       ),
     );
   }
@@ -48,6 +65,7 @@ class FormScreen extends GetView<FormController> {
         ),
         onChanged: (value) => controller.validateEmail(value),
         keyboardType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.done,
       ),
     );
   }
