@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_getx_playground/src/core/models/form_model.dart';
+import 'package:my_getx_playground/src/core/arguments/form_arguments.dart';
 import 'package:my_getx_playground/src/menu/form/form_result_controller.dart';
 
 class FormResultScreen extends GetView<FormResultController> {
   static const routeName = '/form_result';
-  final FormModel? formModel;
+  final FormArguments? formModel;
   const FormResultScreen({Key? key, this.formModel}) : super(key: key);
 
   @override

@@ -1,8 +1,8 @@
-class FormModel {
+class FormArguments {
   final String? fullName;
   final String? email;
 
-  FormModel({this.fullName, this.email});
+  FormArguments({this.fullName, this.email});
 
   Map<String, dynamic> toJson() => {
         "fullName": fullName,

@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:my_getx_playground/src/core/models/form_model.dart';
+import 'package:my_getx_playground/src/core/arguments/form_arguments.dart';
 
 class FormResultController extends GetxController {
-  var formModel = Rx<FormModel?>(null);
+  var formModel = Rx<FormArguments?>(null);
 
-  void initData(FormModel? formModel) {
+  void initData(FormArguments? formModel) {
     this.formModel.value = formModel;
   }
 }

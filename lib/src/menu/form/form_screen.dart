@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_getx_playground/src/core/models/form_model.dart';
+import 'package:my_getx_playground/src/core/arguments/form_arguments.dart';
 import 'package:my_getx_playground/src/menu/form/form_controller.dart';
 import 'package:my_getx_playground/src/menu/form/form_result_screen.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
@@ -75,11 +75,11 @@ class FormScreen extends GetView<FormController> {
           isEnabled: controller.isFormValid.value,
           label: 'Submit',
           onPressed: () {
-            final model = FormModel(
+            final args = FormArguments(
               fullName: controller.fullNameController.text,
               email: controller.emailController.text,
             );
-            Get.toNamed(FormResultScreen.routeName, arguments: model);
+            Get.toNamed(FormResultScreen.routeName, arguments: args);
           },
         ),
       ),
