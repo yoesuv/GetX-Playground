@@ -1,5 +1,7 @@
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:my_getx_playground/src/core/bindings/app_bindings.dart';
+import 'package:my_getx_playground/src/core/models/form_model.dart';
 import 'package:my_getx_playground/src/menu/counter/counter_screen.dart';
 import 'package:my_getx_playground/src/menu/form/form_result_screen.dart';
 import 'package:my_getx_playground/src/menu/form/form_screen.dart';
@@ -22,7 +24,10 @@ final List<GetPage> appRoute = [
   ),
   GetPage(
     name: FormResultScreen.routeName,
-    page: () => const FormResultScreen(),
+    page: () {
+      final args = Get.arguments as FormModel;
+      return FormResultScreen(formModel: args);
+    },
     binding: FormResultBinding(),
   ),
 ];
