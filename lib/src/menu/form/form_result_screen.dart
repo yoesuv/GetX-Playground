@@ -10,6 +10,7 @@ class FormResultScreen extends GetView<FormResultController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.initData(formModel);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Form Result Screen'),
@@ -47,10 +48,14 @@ class FormResultScreen extends GetView<FormResultController> {
   }
 
   Widget _textFullNameValue() {
-    return Text('${formModel?.fullName}');
+    return Obx(
+      () => Text(controller.formModel.value?.fullName ?? '-'),
+    );
   }
 
   Widget _textEmailValue() {
-    return Text('${formModel?.email}');
+    return Obx(
+      () => Text(controller.formModel.value?.email ?? '-'),
+    );
   }
 }
