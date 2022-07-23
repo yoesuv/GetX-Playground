@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/src/menu/counter/counter_controller.dart';
 
-class CounterScreen extends StatelessWidget {
+class CounterScreen extends GetView<CounterController> {
   static const routeName = '/counter';
   const CounterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final counterController = Get.put(CounterController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter Screen'),
@@ -18,8 +17,8 @@ class CounterScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _textCounter(counterController),
-              _counterAction(counterController),
+              _textCounter(),
+              _counterAction(),
             ],
           ),
         ),
@@ -27,10 +26,10 @@ class CounterScreen extends StatelessWidget {
     );
   }
 
-  Widget _textCounter(CounterController counterController) {
+  Widget _textCounter() {
     return Obx(
       () => Text(
-        '${counterController.count}',
+        '${controller.count}',
         style: const TextStyle(
           fontSize: 150,
           fontWeight: FontWeight.bold,
@@ -39,14 +38,14 @@ class CounterScreen extends StatelessWidget {
     );
   }
 
-  Widget _counterAction(CounterController counterController) {
+  Widget _counterAction() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         MaterialButton(
           color: Colors.teal,
           onPressed: () {
-            counterController.decrement();
+            controller.decrement();
           },
           child: const Icon(
             Icons.remove,
@@ -56,7 +55,7 @@ class CounterScreen extends StatelessWidget {
         MaterialButton(
           color: Colors.teal,
           onPressed: () {
-            counterController.increment();
+            controller.increment();
           },
           child: const Icon(
             Icons.add,
