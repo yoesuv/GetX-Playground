@@ -43,4 +43,8 @@ class UserModel {
         "website": website,
         "company": company?.toJson(),
       };
+
+  static List<UserModel> buildListFromJson(List<dynamic> json) {
+    return json.map((dynamic x) => UserModel.fromJson(x)).toList();
+  }
 }
