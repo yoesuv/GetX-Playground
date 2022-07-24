@@ -6,6 +6,7 @@ import 'package:my_getx_playground/src/menu/counter/counter_screen.dart';
 import 'package:my_getx_playground/src/menu/form/form_result_screen.dart';
 import 'package:my_getx_playground/src/menu/form/form_screen.dart';
 import 'package:my_getx_playground/src/menu/home/home_screen.dart';
+import 'package:my_getx_playground/src/menu/networking/networking_screen.dart';
 
 final List<GetPage> appRoute = [
   GetPage(
@@ -29,5 +30,10 @@ final List<GetPage> appRoute = [
       return FormResultScreen(formModel: args);
     },
     binding: FormResultBinding(),
+  ),
+  GetPage(
+    name: NetworkingScreen.routeName,
+    page: () => const NetworkingScreen(),
+    binding: NetworkingBinding(),
   ),
 ];

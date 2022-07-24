@@ -3,6 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:my_getx_playground/src/menu/counter/counter_screen.dart';
 import 'package:my_getx_playground/src/menu/form/form_screen.dart';
+import 'package:my_getx_playground/src/menu/networking/networking_screen.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -36,6 +37,15 @@ class HomeScreen extends StatelessWidget {
                     label: 'Form & Arguments',
                     onPressed: () {
                       Get.toNamed(FormScreen.routeName);
+                    },
+                  ),
+                ),
+                const SizedBox(height: 14),
+                Center(
+                  child: MyButton(
+                    label: 'Networking',
+                    onPressed: () {
+                      Get.toNamed(NetworkingScreen.routeName);
                     },
                   ),
                 ),
