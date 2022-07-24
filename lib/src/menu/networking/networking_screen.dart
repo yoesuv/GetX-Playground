@@ -6,7 +6,6 @@ class NetworkingScreen extends GetView<NetworkingController> {
   static const routeName = '/networking';
   const NetworkingScreen({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,8 +14,25 @@ class NetworkingScreen extends GetView<NetworkingController> {
       ),
       body: SafeArea(
         child: Center(
-          child: Text('Networking'),
+          child: _buildList(),
         ),
+      ),
+    );
+  }
+
+  Widget _buildList() {
+    return Obx(
+      () => ListView.separated(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.only(top: 12),
+        itemCount: controller.listUser.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+            child: Text(controller.listUser[index].name ?? '-'),
+          );
+        },
+        separatorBuilder: (context, index) => const Divider(),
       ),
     );
   }

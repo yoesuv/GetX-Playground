@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:my_getx_playground/src/core/repositories/user_repository.dart';
 import 'package:my_getx_playground/src/menu/counter/counter_controller.dart';
 import 'package:my_getx_playground/src/menu/form/form_controller.dart';
 import 'package:my_getx_playground/src/menu/form/form_result_controller.dart';
@@ -28,6 +29,7 @@ class FormResultBinding implements Bindings {
 class NetworkingBinding implements Bindings {
   @override
   void dependencies() {
+    Get.lazyPut(() => UserRepository());
     Get.lazyPut(() => NetworkingController());
   }
 }
