@@ -12,3 +12,4 @@ Tools • Dart 2.17.6 • DevTools 2.12.2
 ### References ###
 - [GetX](https://github.com/jonataslaw/getx)
 - [GetX Sample Form](https://gist.github.com/eduardoflorence/e49780ab232fa8ad7767bbdbf8389f1e)
+- [GetConnect Sample](https://gist.github.com/eduardoflorence/b4bca2da5cfb973b9f86ecfa1b9f013a)

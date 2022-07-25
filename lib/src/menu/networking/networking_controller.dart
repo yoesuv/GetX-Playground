@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import 'package:my_getx_playground/src/core/models/user_model.dart';
 import 'package:my_getx_playground/src/core/repositories/user_repository.dart';
 
-class NetworkingController extends GetxController {
+class NetworkingController extends GetxController
+    with StateMixin<List<UserModel>> {
   final _userRepository = GetInstance().find<UserRepository>();
-
-  var listUser = <UserModel>[].obs;
 
   @override
   void onInit() {
@@ -17,12 +16,13 @@ class NetworkingController extends GetxController {
   void _getListUser() async {
     try {
       final result = await _userRepository.getUsers();
-      listUser.value = result;
+      change(result, status: RxStatus.success());
     } catch (e) {
       debugPrint(
         'NetworkingController # error _getListUser $e',
         wrapWidth: 1024,
       );
+      change([], status: RxStatus.error('$e'));
     }
   }
 }

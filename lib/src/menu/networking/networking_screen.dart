@@ -13,26 +13,37 @@ class NetworkingScreen extends GetView<NetworkingController> {
         title: const Text('Networking'),
       ),
       body: SafeArea(
-        child: Center(
-          child: _buildList(),
+        child: controller.obx(
+          (state) {
+            return ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.only(top: 12),
+              itemCount: state?.length ?? 0,
+              itemBuilder: (context, index) {
+                final user = state?[index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 6,
+                  ),
+                  child: Text(user?.name ?? '-'),
+                );
+              },
+              separatorBuilder: (context, index) => const Divider(),
+            );
+          },
+          onLoading: const Center(
+            child: CircularProgressIndicator(),
+          ),
+          onEmpty: const Center(
+            child: Text('No Data Found'),
+          ),
+          onError: (error) {
+            return Center(
+              child: Text(error ?? '-'),
+            );
+          },
         ),
-      ),
-    );
-  }
-
-  Widget _buildList() {
-    return Obx(
-      () => ListView.separated(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.only(top: 12),
-        itemCount: controller.listUser.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-            child: Text(controller.listUser[index].name ?? '-'),
-          );
-        },
-        separatorBuilder: (context, index) => const Divider(),
       ),
     );
   }
