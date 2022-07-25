@@ -4,6 +4,7 @@ import 'package:my_getx_playground/src/menu/counter/counter_controller.dart';
 import 'package:my_getx_playground/src/menu/form/form_controller.dart';
 import 'package:my_getx_playground/src/menu/form/form_result_controller.dart';
 import 'package:my_getx_playground/src/menu/networking/networking_controller.dart';
+import 'package:my_getx_playground/src/menu/picker/picker_controller.dart';
 
 class CounterBinding implements Bindings {
   @override
@@ -31,5 +32,12 @@ class NetworkingBinding implements Bindings {
   void dependencies() {
     Get.lazyPut(() => UserRepository());
     Get.put(NetworkingController(userRepository: Get.find<UserRepository>()));
+  }
+}
+
+class PickerBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => PickerController());
   }
 }
