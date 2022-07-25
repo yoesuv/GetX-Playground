@@ -7,6 +7,15 @@ class BaseService extends GetConnect {
     super.onInit();
     httpClient.baseUrl = 'https://jsonplaceholder.typicode.com/';
     httpClient.timeout = const Duration(seconds: 30);
+    httpClient.addResponseModifier((request, response) async {
+      final headers = response.request?.headers;
+      final method = response.request?.method.toUpperCase();
+      final url = response.request?.url;
+      debugPrint('BaseService # headers : $headers');
+      debugPrint('BaseService # response URL : $method $url');
+      printWrapped('${response.body}');
+      return response;
+    });
   }
 
   void printWrapped(String text) {
