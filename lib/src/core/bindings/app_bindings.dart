@@ -30,6 +30,6 @@ class NetworkingBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => UserRepository());
-    Get.lazyPut(() => NetworkingController());
+    Get.put(NetworkingController(userRepository: Get.find<UserRepository>()));
   }
 }

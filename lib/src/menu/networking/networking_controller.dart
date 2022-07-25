@@ -5,7 +5,9 @@ import 'package:my_getx_playground/src/core/repositories/user_repository.dart';
 
 class NetworkingController extends GetxController
     with StateMixin<List<UserModel>> {
-  final _userRepository = GetInstance().find<UserRepository>();
+  UserRepository? userRepository;
+
+  NetworkingController({this.userRepository});
 
   @override
   void onInit() {
@@ -15,7 +17,7 @@ class NetworkingController extends GetxController
 
   void _getListUser() async {
     try {
-      final result = await _userRepository.getUsers();
+      final result = await userRepository?.getUsers();
       change(result, status: RxStatus.success());
     } catch (e) {
       debugPrint(
