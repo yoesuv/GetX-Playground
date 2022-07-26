@@ -6,6 +6,7 @@ import 'package:my_getx_playground/src/menu/counter/counter_screen.dart';
 import 'package:my_getx_playground/src/menu/form/form_result_screen.dart';
 import 'package:my_getx_playground/src/menu/form/form_screen.dart';
 import 'package:my_getx_playground/src/menu/home/home_screen.dart';
+import 'package:my_getx_playground/src/menu/infinite_scroll/infinite_scroll_screen.dart';
 import 'package:my_getx_playground/src/menu/networking/networking_screen.dart';
 import 'package:my_getx_playground/src/menu/picker/picker_screen.dart';
 
@@ -41,5 +42,10 @@ final List<GetPage> appRoute = [
     name: PickerScreen.routeName,
     page: () => const PickerScreen(),
     binding: PickerBinding(),
+  ),
+  GetPage(
+    name: InfiniteScrollScreen.routeName,
+    page: () => const InfiniteScrollScreen(),
+    binding: InfiniteScrollBinding(),
   ),
 ];
