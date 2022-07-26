@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:my_getx_playground/src/core/repositories/post_repository.dart';
 import 'package:my_getx_playground/src/core/repositories/user_repository.dart';
 import 'package:my_getx_playground/src/menu/counter/counter_controller.dart';
 import 'package:my_getx_playground/src/menu/form/form_controller.dart';
@@ -32,7 +33,11 @@ class NetworkingBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => UserRepository());
-    Get.put(NetworkingController(userRepository: Get.find<UserRepository>()));
+    Get.put(
+      NetworkingController(
+        userRepository: Get.find<UserRepository>(),
+      ),
+    );
   }
 }
 
@@ -46,6 +51,11 @@ class PickerBinding implements Bindings {
 class InfiniteScrollBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => InfiniteScrollController());
+    Get.lazyPut(() => PostRepository());
+    Get.put(
+      InfiniteScrollController(
+        postRepository: Get.find<PostRepository>(),
+      ),
+    );
   }
 }
