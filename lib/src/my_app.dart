@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      enableLog: true,
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),

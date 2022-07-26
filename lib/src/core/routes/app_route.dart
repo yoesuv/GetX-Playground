@@ -40,6 +40,6 @@ final List<GetPage> appRoute = [
   GetPage(
     name: PickerScreen.routeName,
     page: () => const PickerScreen(),
-    binding: FormBinding(),
+    binding: PickerBinding(),
   ),
 ];

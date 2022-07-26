@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/src/menu/picker/picker_controller.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class PickerScreen extends GetView<PickerController> {
   static const routeName = '/picker';
@@ -9,19 +10,33 @@ class PickerScreen extends GetView<PickerController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Picker Screen'),
-      ),
-      body: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            MyButton(
-              label: 'Open Gallery',
-              onPressed: () {},
-            ),
-          ],
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: const Text('Picker Screen'),
+        ),
+        body: SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 12),
+              Text(controller.storagePermission.value.name),
+              const SizedBox(height: 12),
+              Center(
+                child: MyButton(
+                  label: 'Open Gallery',
+                  onPressed: () {
+                    if (controller.storagePermission.value ==
+                        PermissionStatus.granted) {
+                    } else {
+                      controller.requestPermission();
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
