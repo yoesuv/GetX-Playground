@@ -5,12 +5,12 @@ class FormController extends GetxController {
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
 
-  var fullNameError = Rx<String?>(null);
-  var emailError = Rx<String?>(null);
+  final fullNameError = Rx<String?>(null);
+  final emailError = Rx<String?>(null);
 
   bool isFullNameValid = false;
   bool isEmailValid = false;
-  var isFormValid = false.obs;
+  final isFormValid = false.obs;
 
   void validateFullName(String value) {
     if (value.isEmpty) {
