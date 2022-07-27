@@ -9,23 +9,38 @@ class InfiniteScrollScreen extends GetView<InfiniteScrollController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Infinite Scroll'),
-      ),
-      body: SafeArea(
-        child: controller.obx(
-          (state) {
-            return ListView.separated(
-              controller: controller.scroll,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              itemCount: state?.length ?? 0,
-              itemBuilder: (context, index) {
-                return _itemPost(state?[index]);
-              },
-              separatorBuilder: (context, index) => const Divider(),
-            );
-          },
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: const Text('Infinite Scroll'),
+        ),
+        body: SafeArea(
+          child: Stack(
+            children: [
+              controller.obx(
+                (state) {
+                  return ListView.separated(
+                    controller: controller.scroll,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    itemCount: state?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      return _itemPost(state?[index]);
+                    },
+                    separatorBuilder: (context, index) => const Divider(),
+                  );
+                },
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: controller.isLoading.value
+                    ? const Padding(
+                        padding: EdgeInsets.only(bottom: 12),
+                        child: CircularProgressIndicator(),
+                      )
+                    : Container(),
+              ),
+            ],
+          ),
         ),
       ),
     );
