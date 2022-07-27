@@ -6,7 +6,7 @@ class PostRepository extends BaseService {
     required int start,
     int limit = 20,
   }) async {
-    final response = await get('posts?_start=$start,_limit=$limit');
+    final response = await get('posts?_start=$start&_limit=$limit');
     if (response.isOk) {
       return PostModel.buildListFromJson(response.body);
     } else {

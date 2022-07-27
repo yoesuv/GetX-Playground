@@ -17,6 +17,7 @@ class InfiniteScrollScreen extends GetView<InfiniteScrollController> {
         child: controller.obx(
           (state) {
             return ListView.separated(
+              controller: controller.scroll,
               padding: const EdgeInsets.symmetric(vertical: 12),
               itemCount: state?.length ?? 0,
               itemBuilder: (context, index) {
@@ -50,6 +51,8 @@ class InfiniteScrollScreen extends GetView<InfiniteScrollController> {
             style: const TextStyle(
               fontSize: 12,
             ),
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
