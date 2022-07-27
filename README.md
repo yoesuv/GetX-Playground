@@ -9,6 +9,10 @@ Engine • revision e85ea0e79c
 Tools • Dart 2.17.6 • DevTools 2.12.2
 ```
 
+#### Infinite Scroll ####
+| ![](https://images2.imgbox.com/08/94/mIcmG3za_o.png) | ![](https://images2.imgbox.com/13/10/Lj2iDtRs_o.png) | ![](https://images2.imgbox.com/c4/40/D4VX1Thy_o.png) |
+| :---: | :---: | :---: |
+
 ### References ###
 - [GetX](https://github.com/jonataslaw/getx)
 - [GetX Sample Form](https://gist.github.com/eduardoflorence/e49780ab232fa8ad7767bbdbf8389f1e)
