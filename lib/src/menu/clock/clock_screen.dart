@@ -19,6 +19,15 @@ class ClockScreen extends GetView<ClockController> {
         body: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const SizedBox(height: 32),
+            Text(
+              '${controller.hour}:${controller.minute}:${controller.second}',
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 32),
             AspectRatio(
               aspectRatio: 1,
               child: Container(
