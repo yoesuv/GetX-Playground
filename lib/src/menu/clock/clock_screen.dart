@@ -1,44 +1,51 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_getx_playground/src/menu/clock/clock_controller.dart';
 
-class ClockScreen extends StatelessWidget {
+class ClockScreen extends GetView<ClockController> {
   static const routeName = '/clock';
   const ClockScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Clock Screen'),
-      ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              //color: Colors.black,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                shape: BoxShape.circle,
-              ),
-              child: Transform.rotate(
-                angle: -pi / 2,
-                child: CustomPaint(
-                  painter: ClockPainter(),
+    controller.startClock();
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: const Text('Clock Screen'),
+        ),
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.grey,
+                  shape: BoxShape.circle,
+                ),
+                child: Transform.rotate(
+                  angle: -pi / 2,
+                  child: CustomPaint(
+                    painter: ClockPainter(dateTime: controller.dateTime.value),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
 class ClockPainter extends CustomPainter {
-  final DateTime dateTime = DateTime.now();
+  final DateTime dateTime;
+
+  ClockPainter({required this.dateTime});
+
   @override
   void paint(Canvas canvas, Size size) {
     double centerX = size.width / 2;

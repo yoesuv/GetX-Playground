@@ -52,5 +52,6 @@ final List<GetPage> appRoute = [
   GetPage(
     name: ClockScreen.routeName,
     page: () => const ClockScreen(),
+    binding: ClockBinding(),
   ),
 ];
