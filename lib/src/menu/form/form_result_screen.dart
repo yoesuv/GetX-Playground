@@ -11,36 +11,38 @@ class FormResultScreen extends GetView<FormResultController> {
   @override
   Widget build(BuildContext context) {
     controller.initData(formModel);
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Form Result Screen'),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 24),
-              const Text(
-                'Full Name :',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: const Text('Form Result Screen'),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 24),
+                const Text(
+                  'Full Name :',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 6),
-              _textFullNameValue(),
-              const SizedBox(height: 12),
-              const Text(
-                'Email : ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                const SizedBox(height: 6),
+                _textFullNameValue(),
+                const SizedBox(height: 12),
+                const Text(
+                  'Email : ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 6),
-              _textEmailValue(),
-            ],
+                const SizedBox(height: 6),
+                _textEmailValue(),
+              ],
+            ),
           ),
         ),
       ),
@@ -48,14 +50,10 @@ class FormResultScreen extends GetView<FormResultController> {
   }
 
   Widget _textFullNameValue() {
-    return Obx(
-      () => Text(controller.formModel.value?.fullName ?? '-'),
-    );
+    return Text(controller.formModel.value?.fullName ?? '-');
   }
 
   Widget _textEmailValue() {
-    return Obx(
-      () => Text(controller.formModel.value?.email ?? '-'),
-    );
+    return Text(controller.formModel.value?.email ?? '-');
   }
 }
