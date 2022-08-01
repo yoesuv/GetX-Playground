@@ -8,18 +8,20 @@ class CounterScreen extends GetView<CounterController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Counter Screen'),
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _textCounter(),
-              _counterAction(),
-            ],
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: const Text('Counter Screen'),
+        ),
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _textCounter(),
+                _counterAction(),
+              ],
+            ),
           ),
         ),
       ),
@@ -27,13 +29,11 @@ class CounterScreen extends GetView<CounterController> {
   }
 
   Widget _textCounter() {
-    return Obx(
-      () => Text(
-        '${controller.count}',
-        style: const TextStyle(
-          fontSize: 150,
-          fontWeight: FontWeight.bold,
-        ),
+    return Text(
+      '${controller.count}',
+      style: const TextStyle(
+        fontSize: 150,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
