@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/src/menu/clock/clock_controller.dart';
+import 'package:my_getx_playground/src/widgets/my_button.dart';
 
 class ClockScreen extends GetView<ClockController> {
   static const routeName = '/clock';
@@ -27,20 +28,31 @@ class ClockScreen extends GetView<ClockController> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 12),
             AspectRatio(
               aspectRatio: 1,
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  shape: BoxShape.circle,
-                ),
-                child: Transform.rotate(
-                  angle: -pi / 2,
-                  child: CustomPaint(
-                    painter: ClockPainter(dateTime: controller.dateTime.value),
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.grey,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Transform.rotate(
+                    angle: -pi / 2,
+                    child: CustomPaint(
+                      painter:
+                          ClockPainter(dateTime: controller.dateTime.value),
+                    ),
                   ),
                 ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            Center(
+              child: MyButton(
+                label: 'Set Alarm Time',
+                onPressed: () {},
               ),
             ),
           ],
