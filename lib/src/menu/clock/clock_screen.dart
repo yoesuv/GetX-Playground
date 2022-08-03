@@ -12,6 +12,7 @@ class ClockScreen extends GetView<ClockController> {
   @override
   Widget build(BuildContext context) {
     controller.startClock();
+    controller.initAlarmDateTime();
     return Obx(
       () => Scaffold(
         appBar: AppBar(

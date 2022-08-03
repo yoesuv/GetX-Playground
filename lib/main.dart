@@ -8,8 +8,10 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await AndroidAlarmManager.initialize();
   runApp(const MyApp());
+
+  // setup alarm
   const int helloAlarmID = 0;
-  await AndroidAlarmManager.periodic(const Duration(minutes: 1), helloAlarmID, printHelloWorld);
+  //await AndroidAlarmManager.periodic(const Duration(minutes: 1), helloAlarmID, printHelloWorld);
 }
 
 void printHelloWorld() {

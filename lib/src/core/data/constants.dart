@@ -1,0 +1,1 @@
+const String keyMyAlarm = 'key_my_alarm';
