@@ -52,9 +52,38 @@ class ClockScreen extends GetView<ClockController> {
             Center(
               child: MyButton(
                 label: 'Set Alarm Time',
-                onPressed: () {},
+                onPressed: () async {
+                  final time = await showTimePicker(
+                    context: context,
+                    initialTime: TimeOfDay(
+                      hour: DateTime.now().hour,
+                      minute: DateTime.now().minute,
+                    ),
+                    builder: (context, child) {
+                      return MediaQuery(
+                        data: MediaQuery.of(context).copyWith(
+                          alwaysUse24HourFormat: true,
+                        ),
+                        child: child ?? Container(),
+                      );
+                    },
+                  );
+                  if (time != null) {
+                    controller.setAlarmDateTime(time);
+                  }
+                },
               ),
             ),
+            const SizedBox(height: 12),
+            controller.alarmDateTime.value != null
+                ? Text(
+                    '${controller.alarmDateTime.value?.hour.toString().padLeft(2, '0')}:${controller.alarmDateTime.value?.minute.toString().padLeft(2, '0')}',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                : Container(),
           ],
         ),
       ),

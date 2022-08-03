@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ClockController extends GetxController {
@@ -7,6 +8,7 @@ class ClockController extends GetxController {
   final hour = Rx<String>('0');
   final minute = Rx<String>('0');
   final second = Rx<String>('0');
+  final alarmDateTime = Rx<DateTime?>(null);
 
   void startClock() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -16,5 +18,16 @@ class ClockController extends GetxController {
       minute.value = now.minute.toString().padLeft(2, '0');
       second.value = now.second.toString().padLeft(2, '0');
     });
+  }
+
+  void setAlarmDateTime(TimeOfDay timeOfDay) {
+    final now = DateTime.now();
+    alarmDateTime.value = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      timeOfDay.hour,
+      timeOfDay.minute,
+    );
   }
 }
