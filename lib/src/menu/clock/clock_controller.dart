@@ -15,13 +15,14 @@ class ClockController extends GetxController {
   void initAlarmDateTime() async {
     final prefs = await SharedPreferences.getInstance();
     final strDate = prefs.getString(keyMyAlarm);
-    if (strDate != null) {
+    if (strDate != null || strDate!.isNotEmpty) {
       debugPrint('ClockController # $strDate');
       try {
         final alarmDate = DateTime.parse(strDate);
         alarmDateTime.value = alarmDate;
       } catch (e) {
         debugPrint('ClockController # error parse $e');
+        alarmDateTime.value = null;
       }
     }
   }
