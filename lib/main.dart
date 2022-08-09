@@ -2,6 +2,7 @@ import 'dart:isolate';
 
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:my_getx_playground/src/core/data/constants.dart';
 import 'package:my_getx_playground/src/core/notifications/notification_api.dart';
 import 'package:my_getx_playground/src/my_app.dart';
@@ -10,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AndroidAlarmManager.initialize();
+  await FlutterDownloader.initialize(debug: false, ignoreSsl: true);
   runApp(const MyApp());
 
   // setup alarm
