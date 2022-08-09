@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/src/menu/download/download_controller.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class DownloadScreen extends GetView<DownloadController> {
   static const routeName = '/download';
@@ -26,7 +27,12 @@ class DownloadScreen extends GetView<DownloadController> {
                 child: MyButton(
                   label: 'Download pdf',
                   onPressed: () {
-                    controller.downloadFile();
+                    if (controller.storagePermission.value ==
+                        PermissionStatus.granted) {
+                      controller.downloadFile();
+                    } else {
+                      controller.requestPermission();
+                    }
                   },
                 ),
               ),
