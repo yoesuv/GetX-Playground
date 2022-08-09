@@ -3,6 +3,7 @@ import 'package:my_getx_playground/src/core/repositories/post_repository.dart';
 import 'package:my_getx_playground/src/core/repositories/user_repository.dart';
 import 'package:my_getx_playground/src/menu/clock/clock_controller.dart';
 import 'package:my_getx_playground/src/menu/counter/counter_controller.dart';
+import 'package:my_getx_playground/src/menu/download/download_controller.dart';
 import 'package:my_getx_playground/src/menu/form/form_controller.dart';
 import 'package:my_getx_playground/src/menu/form/form_result_controller.dart';
 import 'package:my_getx_playground/src/menu/infinite_scroll/infinite_scroll_controller.dart';
@@ -65,5 +66,12 @@ class ClockBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => ClockController());
+  }
+}
+
+class DownloadBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => DownloadController());
   }
 }

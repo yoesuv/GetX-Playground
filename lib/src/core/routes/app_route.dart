@@ -58,5 +58,6 @@ final List<GetPage> appRoute = [
   GetPage(
     name: DownloadScreen.routeName,
     page: () => const DownloadScreen(),
+    binding: DownloadBinding(),
   ),
 ];
