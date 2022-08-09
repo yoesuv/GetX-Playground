@@ -16,15 +16,17 @@ void main() async {
   try {
     final prefs = await SharedPreferences.getInstance();
     final strDate = prefs.getString(keyMyAlarm);
-    if (strDate != null || strDate!.isNotEmpty) {
-      final alarmDate = DateTime.parse(strDate);
-      debugPrint('Main # setup alarm at $alarmDate');
-      const int helloAlarmID = 0;
-      await AndroidAlarmManager.oneShotAt(
-        alarmDate,
-        helloAlarmID,
-        printHelloWorld,
-      );
+    if (strDate != null) {
+      if (strDate.isNotEmpty) {
+        final alarmDate = DateTime.parse(strDate);
+        debugPrint('Main # setup alarm at $alarmDate');
+        const int helloAlarmID = 0;
+        await AndroidAlarmManager.oneShotAt(
+          alarmDate,
+          helloAlarmID,
+          printHelloWorld,
+        );
+      }
     }
   } catch (e) {
     debugPrint('Main # error setup alarm $e');
