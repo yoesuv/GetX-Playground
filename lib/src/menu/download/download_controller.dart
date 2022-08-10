@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
@@ -28,14 +27,17 @@ class DownloadController extends GetxController {
 
   void downloadFile() async {
     debugPrint('DownloadController # download file $linkPdf');
+    Directory? directory;
     if (Platform.isAndroid) {
       try {
-        final downloadDir = await getExternalStorageDirectories();
-        debugPrint(
-            'DownloadController # directory path ${downloadDir?.first.path}');
+        directory = Directory('/storage/emulated/0/Download');
+        if (!await directory.exists()) {
+          directory = await getExternalStorageDirectory();
+        }
+        debugPrint('DownloadController # directory path ${directory?.path}');
         await FlutterDownloader.enqueue(
           url: linkPdf,
-          savedDir: downloadDir?.first.path ?? '',
+          savedDir: directory?.path ?? '',
           showNotification: true,
         );
       } catch (error) {
