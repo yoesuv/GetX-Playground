@@ -5,6 +5,7 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:path/path.dart';
 
 class DownloadController extends GetxController {
   final linkPdf =
@@ -26,20 +27,28 @@ class DownloadController extends GetxController {
   }
 
   void downloadFile() async {
-    debugPrint('DownloadController # download file $linkPdf');
+    debugPrint('DownloadController # download link : $linkPdf');
     Directory? directory;
     if (Platform.isAndroid) {
       try {
+        File file = File(linkPdf);
+        final fileName = basename(file.path);
         directory = Directory('/storage/emulated/0/Download');
         if (!await directory.exists()) {
           directory = await getExternalStorageDirectory();
         }
-        debugPrint('DownloadController # directory path ${directory?.path}');
-        await FlutterDownloader.enqueue(
-          url: linkPdf,
-          savedDir: directory?.path ?? '',
-          showNotification: true,
-        );
+        final filePath = '${directory?.path}/$fileName';
+        debugPrint('DownloadController # file path $filePath');
+        File newFile = File(filePath);
+        if (await newFile.exists()) {
+          debugPrint('DownloadController # File is exist');
+        } else {
+          await FlutterDownloader.enqueue(
+            url: linkPdf,
+            savedDir: directory?.path ?? '',
+            showNotification: true,
+          );
+        }
       } catch (error) {
         debugPrint('DownloadController # error $error');
       }
