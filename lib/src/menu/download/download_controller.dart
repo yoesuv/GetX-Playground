@@ -33,22 +33,23 @@ class DownloadController extends GetxController {
       try {
         File file = File(linkPdf);
         final fileName = basename(file.path);
+        final now = DateTime.now();
+        final strDay = '${now.day}'.padLeft(2,'0');
+        final strMonth = '${now.month}'.padLeft(2,'0');
+        final strMsEpoch = '${now.millisecondsSinceEpoch}';
+        final strDateTime = '$strDay-$strMonth-${now.year}-$strMsEpoch';
         directory = Directory('/storage/emulated/0/Download');
         if (!await directory.exists()) {
           directory = await getExternalStorageDirectory();
         }
-        final filePath = '${directory?.path}/$fileName';
-        debugPrint('DownloadController # file path $filePath');
-        File newFile = File(filePath);
-        if (await newFile.exists()) {
-          debugPrint('DownloadController # File is exist');
-        } else {
-          await FlutterDownloader.enqueue(
-            url: linkPdf,
-            savedDir: directory?.path ?? '',
-            showNotification: true,
-          );
-        }
+        final strFileName = '$strDateTime-$fileName';
+        debugPrint('DownloadController # final file name : $strFileName');
+        await FlutterDownloader.enqueue(
+          url: linkPdf,
+          savedDir: directory?.path ?? '',
+          showNotification: true,
+          fileName: strFileName,
+        );
       } catch (error) {
         debugPrint('DownloadController # error $error');
       }
