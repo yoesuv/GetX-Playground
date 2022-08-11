@@ -36,6 +36,20 @@ class DownloadScreen extends GetView<DownloadController> {
                   },
                 ),
               ),
+              const SizedBox(height: 12),
+              Center(
+                child: MyButton(
+                  label: 'Download pdf (dio)',
+                  onPressed: () {
+                    if (controller.storagePermission.value ==
+                        PermissionStatus.granted) {
+                      controller.downloadFileDio();
+                    } else {
+                      controller.requestPermission();
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ),
