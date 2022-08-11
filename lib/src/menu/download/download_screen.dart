@@ -29,9 +29,9 @@ class DownloadScreen extends GetView<DownloadController> {
                   onPressed: () {
                     if (controller.storagePermission.value ==
                         PermissionStatus.granted) {
-                      controller.downloadFile();
+                      controller.downloadFile(DownloadChannel.downloader);
                     } else {
-                      controller.requestPermission();
+                      controller.requestPermission(DownloadChannel.downloader);
                     }
                   },
                 ),
@@ -43,9 +43,9 @@ class DownloadScreen extends GetView<DownloadController> {
                   onPressed: () {
                     if (controller.storagePermission.value ==
                         PermissionStatus.granted) {
-                      controller.downloadFileDio();
+                      controller.downloadFile(DownloadChannel.dio);
                     } else {
-                      controller.requestPermission();
+                      controller.requestPermission(DownloadChannel.dio);
                     }
                   },
                 ),
