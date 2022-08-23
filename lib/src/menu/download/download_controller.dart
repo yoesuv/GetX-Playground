@@ -16,7 +16,7 @@ enum DownloadChannel {
 class DownloadController extends GetxController {
   // this is temporary
   final linkPdf =
-      'https://file-examples.com/storage/fe55caf14262f430798bc7a/2017/10/file-sample_150kB.pdf';
+      'https://file-examples.com/storage/fe5467a6a163010b197fb20/2017/10/file-sample_150kB.pdf';
   final storagePermission = Rx<PermissionStatus>(PermissionStatus.denied);
 
   @override
@@ -66,12 +66,38 @@ class DownloadController extends GetxController {
             '${directory?.path}/$strFileName',
             onReceiveProgress: (count, total) {
               debugPrint('DownloadController # $count/$total');
+              if (count == total) {
+                Get.snackbar(
+                  'Download',
+                  'Download Finished',
+                  backgroundColor: Colors.green,
+                  colorText: Colors.white,
+                  snackPosition: SnackPosition.BOTTOM,
+                  margin: const EdgeInsets.only(
+                    bottom: 16,
+                    left: 16,
+                    right: 16,
+                  ),
+                );
+              }
             },
           );
         }
       }
     } catch (error) {
       debugPrint('DownloadController # error $error');
+      Get.snackbar(
+        'Download',
+        'Download Failed',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+        margin: const EdgeInsets.only(
+          bottom: 16,
+          left: 16,
+          right: 16,
+        ),
+      );
     }
   }
 }
