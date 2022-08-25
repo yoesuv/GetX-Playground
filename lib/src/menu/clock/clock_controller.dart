@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/src/core/data/constants.dart';
@@ -11,6 +12,12 @@ class ClockController extends GetxController {
   final minute = Rx<String>('0');
   final second = Rx<String>('0');
   final alarmDateTime = Rx<DateTime?>(null);
+
+  @override
+  void onInit() async {
+    super.onInit();
+    AndroidAlarmManager.initialize();
+  }
 
   void initAlarmDateTime() async {
     final prefs = await SharedPreferences.getInstance();
@@ -51,5 +58,19 @@ class ClockController extends GetxController {
     alarmDateTime.value = alarm;
     final prefs = await SharedPreferences.getInstance();
     prefs.setString(keyMyAlarm, alarm.toIso8601String());
+    await AndroidAlarmManager.oneShotAt(
+      alarm,
+      idMyAlarm,
+      _runAlarm,
+      wakeup: true,
+      rescheduleOnReboot: true,
+    );
+  }
+
+  void _runAlarm() async {
+    final now = DateTime.now();
+    debugPrint('ClockController # one shot at : ${now.toIso8601String()}');
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(keyMyAlarm, '');
   }
 }

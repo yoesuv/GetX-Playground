@@ -75,19 +75,29 @@ class ClockScreen extends GetView<ClockController> {
                 },
               ),
             ),
-            const SizedBox(height: 12),
-            controller.alarmDateTime.value != null
-                ? Text(
-                    '${controller.alarmDateTime.value?.hour.toString().padLeft(2, '0')}:${controller.alarmDateTime.value?.minute.toString().padLeft(2, '0')}',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                : Container(),
+            _buildAlarmDate(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildAlarmDate() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 12),
+        controller.alarmDateTime.value == null
+            ? Container()
+            : Text(
+                '${controller.alarmDateTime.value?.hour.toString().padLeft(2, '0')}:${controller.alarmDateTime.value?.minute.toString().padLeft(2, '0')}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+      ],
     );
   }
 }
