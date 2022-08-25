@@ -5,7 +5,7 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:my_getx_playground/src/core/data/constants.dart';
 import 'package:my_getx_playground/src/core/notifications/notification_api.dart';
 import 'package:my_getx_playground/src/my_app.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:my_getx_playground/src/utils/preference_utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,9 +30,9 @@ void downloadCallback(
 
 // this function called in clock controller
 void runMainAlarm() async {
+  final prefs = await PreferencesUtil.instance;
+  prefs.remove(keyMyAlarm);
   final strNow = DateTime.now().toIso8601String();
   debugPrint('Main # one shot at : $strNow');
   NotificationApi.showNotification(title: 'Alarm', body: 'Time $strNow');
-  final prefs = await SharedPreferences.getInstance();
-  prefs.setString(keyMyAlarm, '');
 }

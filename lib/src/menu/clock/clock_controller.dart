@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/main.dart';
 import 'package:my_getx_playground/src/core/data/constants.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:my_getx_playground/src/core/notifications/notification_api.dart';
+import 'package:my_getx_playground/src/utils/preference_utils.dart';
 
 class ClockController extends GetxController {
   final dateTime = Rx<DateTime>(DateTime.now());
@@ -21,19 +22,21 @@ class ClockController extends GetxController {
   }
 
   void initAlarmDateTime() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = await PreferencesUtil.instance;
     final strDate = prefs.getString(keyMyAlarm);
-    if (strDate != null) {
-      if (strDate.isNotEmpty) {
-        debugPrint('ClockController # $strDate');
-        try {
-          final alarmDate = DateTime.parse(strDate);
-          alarmDateTime.value = alarmDate;
-        } catch (e) {
-          debugPrint('ClockController # error parse $e');
-          alarmDateTime.value = null;
-        }
+    try {
+      if (strDate == null) {
+        alarmDateTime.value = null;
+      } else if (strDate.isEmpty) {
+        alarmDateTime.value = null;
+      } else {
+        debugPrint('ClockController # pref date : $strDate');
+        final alarmDate = DateTime.parse(strDate);
+        alarmDateTime.value = alarmDate;
       }
+    } catch (e) {
+      debugPrint('ClockController # error parse $e');
+      alarmDateTime.value = null;
     }
   }
 
@@ -57,7 +60,7 @@ class ClockController extends GetxController {
       timeOfDay.minute,
     );
     alarmDateTime.value = alarm;
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = await PreferencesUtil.instance;
     prefs.setString(keyMyAlarm, alarm.toIso8601String());
     await AndroidAlarmManager.oneShotAt(
       alarm,
@@ -67,5 +70,4 @@ class ClockController extends GetxController {
       rescheduleOnReboot: true,
     );
   }
-
 }
