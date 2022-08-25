@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class ClockScreen extends GetView<ClockController> {
               ),
             ),
             const SizedBox(height: 12),
-            Center(
+            Platform.isIOS ? Container() : Center(
               child: MyButton(
                 label: 'Set Alarm Time',
                 onPressed: () async {
@@ -79,7 +80,7 @@ class ClockScreen extends GetView<ClockController> {
                 },
               ),
             ),
-            _buildAlarmDate(),
+            Platform.isIOS ? Container() : _buildAlarmDate(),
           ],
         ),
       ),
