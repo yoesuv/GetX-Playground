@@ -5,6 +5,10 @@ import 'package:get/get.dart';
 import 'package:my_getx_playground/src/menu/clock/clock_controller.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
 
+const secLength = 0.35;
+const minLength = 0.30;
+const hourLength = 0.27;
+
 class ClockScreen extends GetView<ClockController> {
   static const routeName = '/clock';
   const ClockScreen({Key? key}) : super(key: key);
@@ -30,23 +34,23 @@ class ClockScreen extends GetView<ClockController> {
               ),
             ),
             const SizedBox(height: 12),
-            AspectRatio(
-              aspectRatio: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Transform.rotate(
-                    angle: -pi / 2,
-                    child: CustomPaint(
-                      painter:
-                          ClockPainter(dateTime: controller.dateTime.value),
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Stack(
+                children: [
+                  Image.asset('assets/images/clock_background.png'),
+                  AspectRatio(
+                    aspectRatio: 1,
+                    child: Transform.rotate(
+                      angle: -pi / 2,
+                      child: CustomPaint(
+                        painter: ClockPainter(
+                          dateTime: controller.dateTime.value,
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ),
             const SizedBox(height: 12),
@@ -113,48 +117,53 @@ class ClockPainter extends CustomPainter {
     double centerY = size.height / 2;
     Offset center = Offset(centerX, centerY);
 
-    double secondX =
-        centerX + size.width * 0.4 * cos((dateTime.second * 6) * pi / 180);
-    double secondY =
-        centerY + size.width * 0.4 * sin((dateTime.second * 6) * pi / 180);
-    // second
-    canvas.drawLine(
-        center, Offset(secondX, secondY), Paint()..color = Colors.red);
-
-    double minX =
-        centerX + size.width * 0.35 * cos((dateTime.minute * 6) * pi / 180);
-    double minY =
-        centerY + size.width * 0.35 * sin((dateTime.minute * 6) * pi / 180);
-    // minute
-    canvas.drawLine(
-      center,
-      Offset(minX, minY),
-      Paint()
-        ..color = Colors.green
-        ..strokeWidth = 5
-        ..style = PaintingStyle.stroke,
-    );
-
     double hourX = centerX +
         size.width *
-            0.3 *
+            hourLength *
             cos((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
     double hourY = centerY +
         size.width *
-            0.3 *
+            hourLength *
             sin((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
     // hour
     canvas.drawLine(
       center,
       Offset(hourX, hourY),
       Paint()
-        ..color = Colors.blue
+        ..color = const Color(0xFF616161)
         ..strokeWidth = 10
         ..style = PaintingStyle.stroke,
     );
 
+    double minX = centerX +
+        size.width * minLength * cos((dateTime.minute * 6) * pi / 180);
+    double minY = centerY +
+        size.width * minLength * sin((dateTime.minute * 6) * pi / 180);
+    // minute
+    canvas.drawLine(
+      center,
+      Offset(minX, minY),
+      Paint()
+        ..color = const Color(0xFF616161)
+        ..strokeWidth = 5
+        ..style = PaintingStyle.stroke,
+    );
+
+    double secondX = centerX +
+        size.width * secLength * cos((dateTime.second * 6) * pi / 180);
+    double secondY = centerY +
+        size.width * secLength * sin((dateTime.second * 6) * pi / 180);
+    // second
+    canvas.drawLine(
+      center,
+      Offset(secondX, secondY),
+      Paint()
+        ..color = const Color(0xFFF44336)
+        ..strokeWidth = 2,
+    );
+
     // center circle
-    canvas.drawCircle(center, 24, Paint()..color = Colors.black);
+    canvas.drawCircle(center, 8, Paint()..color = Colors.black);
   }
 
   @override
