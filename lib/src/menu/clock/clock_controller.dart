@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_getx_playground/main.dart';
 import 'package:my_getx_playground/src/core/data/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -61,16 +62,10 @@ class ClockController extends GetxController {
     await AndroidAlarmManager.oneShotAt(
       alarm,
       idMyAlarm,
-      _runAlarm,
+      runMainAlarm,
       wakeup: true,
       rescheduleOnReboot: true,
     );
   }
 
-  void _runAlarm() async {
-    final now = DateTime.now();
-    debugPrint('ClockController # one shot at : ${now.toIso8601String()}');
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString(keyMyAlarm, '');
-  }
 }
