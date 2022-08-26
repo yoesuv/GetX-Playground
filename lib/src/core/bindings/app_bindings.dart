@@ -9,6 +9,7 @@ import 'package:my_getx_playground/src/menu/form/form_result_controller.dart';
 import 'package:my_getx_playground/src/menu/infinite_scroll/infinite_scroll_controller.dart';
 import 'package:my_getx_playground/src/menu/networking/networking_controller.dart';
 import 'package:my_getx_playground/src/menu/picker/picker_controller.dart';
+import 'package:my_getx_playground/src/menu/storage/storage_controller.dart';
 
 class CounterBinding implements Bindings {
   @override
@@ -73,5 +74,12 @@ class DownloadBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => DownloadController());
+  }
+}
+
+class StorageBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => StorageController());
   }
 }

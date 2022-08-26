@@ -8,6 +8,7 @@ import 'package:my_getx_playground/src/menu/form/form_screen.dart';
 import 'package:my_getx_playground/src/menu/infinite_scroll/infinite_scroll_screen.dart';
 import 'package:my_getx_playground/src/menu/networking/networking_screen.dart';
 import 'package:my_getx_playground/src/menu/picker/picker_screen.dart';
+import 'package:my_getx_playground/src/menu/storage/storage_screen.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -93,7 +94,9 @@ class HomeScreen extends StatelessWidget {
                 Center(
                   child: MyButton(
                     label: 'My Task',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(StorageScreen.routeName);
+                    },
                   ),
                 ),
               ],
