@@ -1,11 +1,11 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/main.dart';
 import 'package:my_getx_playground/src/core/data/constants.dart';
-import 'package:my_getx_playground/src/core/notifications/notification_api.dart';
 import 'package:my_getx_playground/src/utils/preference_utils.dart';
 
 class ClockController extends GetxController {
@@ -18,7 +18,9 @@ class ClockController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    AndroidAlarmManager.initialize();
+    if (Platform.isAndroid) {
+      AndroidAlarmManager.initialize();
+    }
   }
 
   void initAlarmDateTime() async {

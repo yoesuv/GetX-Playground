@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -9,8 +10,10 @@ import 'package:my_getx_playground/src/utils/preference_utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await FlutterDownloader.initialize(debug: false, ignoreSsl: true);
-  FlutterDownloader.registerCallback(downloadCallback);
+  if (Platform.isAndroid) {
+    await FlutterDownloader.initialize(debug: false, ignoreSsl: true);
+    FlutterDownloader.registerCallback(downloadCallback);
+  }
   runApp(const MyApp());
 }
 

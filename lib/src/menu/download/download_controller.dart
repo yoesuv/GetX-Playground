@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get/get.dart';
+import 'package:my_getx_playground/src/utils/app_snackbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path/path.dart';
@@ -67,37 +68,17 @@ class DownloadController extends GetxController {
             onReceiveProgress: (count, total) {
               debugPrint('DownloadController # $count/$total');
               if (count == total) {
-                Get.snackbar(
-                  'Download',
-                  'Download Finished',
-                  backgroundColor: Colors.green,
-                  colorText: Colors.white,
-                  snackPosition: SnackPosition.BOTTOM,
-                  margin: const EdgeInsets.only(
-                    bottom: 16,
-                    left: 16,
-                    right: 16,
-                  ),
-                );
+                snackBarSuccess('Download', 'Download Finished');
               }
             },
           );
         }
+      } else {
+        snackBarWarning('Download', 'Android Only');
       }
     } catch (error) {
       debugPrint('DownloadController # error $error');
-      Get.snackbar(
-        'Download',
-        'Download Failed',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-        margin: const EdgeInsets.only(
-          bottom: 16,
-          left: 16,
-          right: 16,
-        ),
-      );
+      snackBarError('Download', 'Download Failed');
     }
   }
 }
