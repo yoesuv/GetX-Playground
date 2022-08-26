@@ -18,6 +18,13 @@ class StorageScreen extends GetView<StorageController> {
             child: Text(controller.title.value),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
