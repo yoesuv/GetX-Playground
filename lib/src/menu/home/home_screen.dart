@@ -89,6 +89,13 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
+                const SizedBox(height: 14),
+                Center(
+                  child: MyButton(
+                    label: 'My Task',
+                    onPressed: () {},
+                  ),
+                ),
               ],
             ),
           ),
