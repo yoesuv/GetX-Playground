@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:my_getx_playground/src/menu/clock/clock_screen.dart';
 import 'package:my_getx_playground/src/menu/counter/counter_screen.dart';
+import 'package:my_getx_playground/src/menu/download/download_screen.dart';
 import 'package:my_getx_playground/src/menu/form/form_screen.dart';
 import 'package:my_getx_playground/src/menu/infinite_scroll/infinite_scroll_screen.dart';
 import 'package:my_getx_playground/src/menu/networking/networking_screen.dart';
@@ -66,6 +68,24 @@ class HomeScreen extends StatelessWidget {
                     label: 'Infinite Scroll',
                     onPressed: () {
                       Get.toNamed(InfiniteScrollScreen.routeName);
+                    },
+                  ),
+                ),
+                const SizedBox(height: 14),
+                Center(
+                  child: MyButton(
+                    label: 'Clock',
+                    onPressed: () {
+                      Get.toNamed(ClockScreen.routeName);
+                    },
+                  ),
+                ),
+                const SizedBox(height: 14),
+                Center(
+                  child: MyButton(
+                    label: 'Download',
+                    onPressed: () {
+                      Get.toNamed(DownloadScreen.routeName);
                     },
                   ),
                 ),

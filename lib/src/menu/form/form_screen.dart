@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/src/core/arguments/form_arguments.dart';
@@ -65,8 +67,9 @@ class FormScreen extends GetView<FormController> {
   }
 
   Widget _buttonSubmit() {
+    final double bottomPadding = Platform.isAndroid ? 12 : 24;
     return Padding(
-      padding: const EdgeInsets.only(left: 24, right: 24, bottom: 12),
+      padding: EdgeInsets.only(left: 24, right: 24, bottom: bottomPadding),
       child: MyButton(
         height: 45,
         isEnabled: controller.isFormValid.value,
