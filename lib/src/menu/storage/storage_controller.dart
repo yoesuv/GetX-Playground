@@ -23,6 +23,7 @@ class StorageController extends GetxController {
   }
 
   void cancelTask() {
+    debugPrint('StorageController # cancel insert');
     _clearTextController();
   }
 
