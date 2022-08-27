@@ -31,18 +31,24 @@ class StorageScreen extends GetView<StorageController> {
             ),
             const SizedBox(height: 8),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: contentDialogPadding),
+              padding: const EdgeInsets.symmetric(
+                horizontal: contentDialogPadding,
+              ),
               child: TextField(
-                decoration: InputDecoration(
+                controller: controller.taskTitleController,
+                decoration: const InputDecoration(
                   hintText: 'Task Title',
                 ),
               ),
             ),
             const SizedBox(height: 8),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: contentDialogPadding),
+              padding: const EdgeInsets.symmetric(
+                horizontal: contentDialogPadding,
+              ),
               child: TextField(
-                decoration: InputDecoration(
+                controller: controller.taskContentController,
+                decoration: const InputDecoration(
                   hintText: 'Task Content',
                 ),
               ),
@@ -60,6 +66,7 @@ class StorageScreen extends GetView<StorageController> {
                     child: OutlinedButton(
                       onPressed: () {
                         Get.back();
+                        controller.cancelTask();
                       },
                       style: OutlinedButton.styleFrom(
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -72,6 +79,7 @@ class StorageScreen extends GetView<StorageController> {
                     child: OutlinedButton(
                       onPressed: () {
                         Get.back();
+                        controller.insertTask();
                       },
                       style: OutlinedButton.styleFrom(
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
