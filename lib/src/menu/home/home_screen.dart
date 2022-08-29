@@ -8,7 +8,10 @@ import 'package:my_getx_playground/src/menu/form/form_screen.dart';
 import 'package:my_getx_playground/src/menu/infinite_scroll/infinite_scroll_screen.dart';
 import 'package:my_getx_playground/src/menu/networking/networking_screen.dart';
 import 'package:my_getx_playground/src/menu/picker/picker_screen.dart';
+import 'package:my_getx_playground/src/menu/storage/storage_screen.dart';
 import 'package:my_getx_playground/src/widgets/my_button.dart';
+
+const double buttonSpace = 14;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -35,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 14),
+                const SizedBox(height: buttonSpace),
                 Center(
                   child: MyButton(
                     label: 'Form & Arguments',
@@ -44,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 14),
+                const SizedBox(height: buttonSpace),
                 Center(
                   child: MyButton(
                     label: 'Networking',
@@ -53,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 14),
+                const SizedBox(height: buttonSpace),
                 Center(
                   child: MyButton(
                     label: 'Picker',
@@ -62,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 14),
+                const SizedBox(height: buttonSpace),
                 Center(
                   child: MyButton(
                     label: 'Infinite Scroll',
@@ -71,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 14),
+                const SizedBox(height: buttonSpace),
                 Center(
                   child: MyButton(
                     label: 'Clock',
@@ -80,12 +83,21 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 14),
+                const SizedBox(height: buttonSpace),
                 Center(
                   child: MyButton(
                     label: 'Download',
                     onPressed: () {
                       Get.toNamed(DownloadScreen.routeName);
+                    },
+                  ),
+                ),
+                const SizedBox(height: buttonSpace),
+                Center(
+                  child: MyButton(
+                    label: 'My Task',
+                    onPressed: () {
+                      Get.toNamed(StorageScreen.routeName);
                     },
                   ),
                 ),

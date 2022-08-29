@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:my_getx_playground/src/core/data/constants.dart';
 import 'package:my_getx_playground/src/core/notifications/notification_api.dart';
 import 'package:my_getx_playground/src/my_app.dart';
@@ -14,6 +15,7 @@ void main() async {
     await FlutterDownloader.initialize(debug: false, ignoreSsl: true);
     FlutterDownloader.registerCallback(downloadCallback);
   }
+  await GetStorage.init(myStorage);
   runApp(const MyApp());
 }
 

@@ -11,6 +11,7 @@ import 'package:my_getx_playground/src/menu/home/home_screen.dart';
 import 'package:my_getx_playground/src/menu/infinite_scroll/infinite_scroll_screen.dart';
 import 'package:my_getx_playground/src/menu/networking/networking_screen.dart';
 import 'package:my_getx_playground/src/menu/picker/picker_screen.dart';
+import 'package:my_getx_playground/src/menu/storage/storage_screen.dart';
 
 final List<GetPage> appRoute = [
   GetPage(
@@ -59,5 +60,10 @@ final List<GetPage> appRoute = [
     name: DownloadScreen.routeName,
     page: () => const DownloadScreen(),
     binding: DownloadBinding(),
+  ),
+  GetPage(
+    name: StorageScreen.routeName,
+    page: () => const StorageScreen(),
+    binding: StorageBinding(),
   ),
 ];
