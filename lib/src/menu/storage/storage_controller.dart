@@ -9,7 +9,7 @@ import 'package:my_getx_playground/src/utils/app_snackbar.dart';
 class StorageController extends GetxController {
   final box = GetStorage();
   final title = 'Get Storage'.obs;
-  final tasks = <TaskModel>[].obs;
+  final tasks = <Map<String, dynamic>>[].obs;
 
   final taskTitleController = TextEditingController();
   final taskContentController = TextEditingController();
@@ -17,8 +17,12 @@ class StorageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    final String? dbTask = box.read<String>(myTask);
-    debugPrint('StorageController # on init $dbTask', wrapWidth: 1024);
+    final List<Map<String, dynamic>>? dbTask = box.read(myTask);
+    if (dbTask != null) {
+      for (var element in dbTask) {
+        tasks.add(element);
+      }
+    }
   }
 
   void insertTask() {
@@ -33,8 +37,8 @@ class StorageController extends GetxController {
         titleTask: taskTitleController.text,
         contentTask: taskContentController.text,
       );
-      tasks.add(task);
-      box.write(myTask, tasks.asMap().toString());
+      tasks.add(task.toJson());
+      box.write(myTask, tasks);
       _clearTextController();
     }
   }

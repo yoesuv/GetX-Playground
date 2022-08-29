@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_getx_playground/src/core/models/task_model.dart';
 import 'package:my_getx_playground/src/menu/storage/storage_controller.dart';
 import 'package:my_getx_playground/src/menu/storage/view_input_task.dart';
 
@@ -38,6 +39,7 @@ class StorageScreen extends GetView<StorageController> {
             padding: const EdgeInsets.only(top: 8),
             itemCount: controller.tasks.length,
             itemBuilder: (context, index) {
+              final task = TaskModel.fromJson(controller.tasks[index]);
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Column(
@@ -45,14 +47,14 @@ class StorageScreen extends GetView<StorageController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      controller.tasks[index].titleTask ?? '',
+                      task.titleTask ?? '',
                       style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(height: 4),
-                    Text(controller.tasks[index].contentTask ?? ''),
+                    Text(task.contentTask ?? ''),
                   ],
                 ),
               );
