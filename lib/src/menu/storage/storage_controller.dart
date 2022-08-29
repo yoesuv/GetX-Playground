@@ -52,4 +52,9 @@ class StorageController extends GetxController {
     taskTitleController.clear();
     taskContentController.clear();
   }
+
+  void clearData() async {
+    tasks.clear();
+    await box.erase();
+  }
 }

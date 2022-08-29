@@ -8,6 +8,18 @@ class StorageScreen extends GetView<StorageController> {
   static const routeName = '/my_task';
   const StorageScreen({Key? key}) : super(key: key);
 
+  void _showDeleteAllDialog() {
+    Get.defaultDialog(
+      title: 'Delete All',
+      middleText: 'Delete All Task?',
+      onConfirm: () {
+        Get.back();
+        controller.clearData();
+      },
+      radius: 4,
+    );
+  }
+
   void _showInputDialog() {
     Get.dialog(
       AlertDialog(
@@ -33,6 +45,18 @@ class StorageScreen extends GetView<StorageController> {
       () => Scaffold(
         appBar: AppBar(
           title: const Text('My Task'),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: InkWell(
+                onTap: _showDeleteAllDialog,
+                child: const Icon(
+                  Icons.delete_forever,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
         body: SafeArea(
           child: ListView.separated(
