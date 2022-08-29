@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_getx_playground/src/core/models/task_model.dart';
 import 'package:my_getx_playground/src/utils/app_snackbar.dart';
 
 class StorageController extends GetxController {
@@ -15,9 +16,12 @@ class StorageController extends GetxController {
     } else if (taskContentController.text.isEmpty) {
       snackBarWarning('Insert Task', 'Input Task Content');
     } else {
-      debugPrint('StorageController # task title ${taskTitleController.text}');
-      debugPrint(
-          'StorageController # task content ${taskContentController.text}');
+      final task = TaskModel(
+        id: 1,
+        titleTask: taskTitleController.text,
+        contentTask: taskContentController.text,
+      );
+      debugPrint('StorageController # task ${task.toJson()}');
       _clearTextController();
     }
   }
@@ -31,5 +35,4 @@ class StorageController extends GetxController {
     taskTitleController.clear();
     taskContentController.clear();
   }
-
 }
