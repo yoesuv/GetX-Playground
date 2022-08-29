@@ -5,6 +5,7 @@ import 'package:my_getx_playground/src/utils/app_snackbar.dart';
 
 class StorageController extends GetxController {
   final title = 'Get Storage'.obs;
+  final tasks = <TaskModel>[].obs;
 
   final taskTitleController = TextEditingController();
   final taskContentController = TextEditingController();
@@ -22,6 +23,7 @@ class StorageController extends GetxController {
         contentTask: taskContentController.text,
       );
       debugPrint('StorageController # task ${task.toJson()}');
+      tasks.add(task);
       _clearTextController();
     }
   }

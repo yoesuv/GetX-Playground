@@ -34,8 +34,30 @@ class StorageScreen extends GetView<StorageController> {
           title: const Text('My Task'),
         ),
         body: SafeArea(
-          child: Center(
-            child: Text(controller.title.value),
+          child: ListView.separated(
+            padding: const EdgeInsets.only(top: 8),
+            itemCount: controller.tasks.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      controller.tasks[index].titleTask ?? '',
+                      style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(controller.tasks[index].contentTask ?? ''),
+                  ],
+                ),
+              );
+            },
+            separatorBuilder: (context, index) => const Divider(),
           ),
         ),
         floatingActionButton: FloatingActionButton(
