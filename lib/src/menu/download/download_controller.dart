@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get/get.dart';
+import 'package:my_getx_playground/src/core/data/constants.dart';
 import 'package:my_getx_playground/src/utils/app_snackbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -15,9 +16,6 @@ enum DownloadChannel {
 }
 
 class DownloadController extends GetxController {
-  // this is temporary
-  final linkPdf =
-      'https://file-examples.com/storage/fe5467a6a163010b197fb20/2017/10/file-sample_150kB.pdf';
   final storagePermission = Rx<PermissionStatus>(PermissionStatus.denied);
 
   @override
