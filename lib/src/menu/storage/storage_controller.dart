@@ -17,9 +17,11 @@ class StorageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    final List<Map<String, dynamic>>? dbTask = box.read(myTask);
-    if (dbTask != null) {
-      for (var element in dbTask) {
+    final dataTasks = box.read(myTask);
+    debugPrint('StorageController # data tasks $dataTasks', wrapWidth: 1024);
+    if (dataTasks != null) {
+      for (var element in dataTasks) {
+        debugPrint('StorageController # $element');
         tasks.add(element);
       }
     }
