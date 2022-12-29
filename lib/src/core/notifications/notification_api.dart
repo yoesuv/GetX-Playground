@@ -11,7 +11,7 @@ class NotificationApi {
         icon: 'ic_notification_small',
         importance: Importance.max,
       ),
-      iOS: IOSNotificationDetails(),
+      iOS: DarwinNotificationDetails(),
     );
   }
 
