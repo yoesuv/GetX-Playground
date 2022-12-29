@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   android_alarm_manager_plus: ^2.0.6
   dio: ^4.0.6
-  flutter_downloader: ^1.8.1
+  flutter_downloader: ^1.9.1
   flutter_local_notifications: ^13.0.0
   get: ^4.6.5
   get_storage: ^2.0.3
