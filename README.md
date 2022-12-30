@@ -21,6 +21,7 @@ Tools • Dart 2.18.6 • DevTools 2.15.0
 
 ### Libraries ###
 - [Android Alarm Manager Plus](https://pub.dev/packages/android_alarm_manager_plus)
+- [Device Info Plus](https://pub.dev/packages/device_info_plus)
 - [Dio](https://pub.dev/packages/dio)
 - [Flutter Downloader](https://pub.dev/packages/flutter_downloader)
 - [Flutter Local Notifications](https://pub.dev/packages/flutter_local_notifications)
