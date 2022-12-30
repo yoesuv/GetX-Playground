@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <!-- For apps with targetSDK=31 (Android 12) -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <!-- new sdk 33 open gallery -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
    <application
         android:label="my_getx_playground"
