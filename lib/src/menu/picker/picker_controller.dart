@@ -21,7 +21,7 @@ class PickerController extends GetxController {
         storagePermission.value = await Permission.photos.status;
       }
     } else {
-      storagePermission.value = await Permission.storage.status;
+      storagePermission.value = await Permission.photos.status;
     }
   }
 
@@ -36,7 +36,7 @@ class PickerController extends GetxController {
         request = await Permission.photos.request();
       }
     } else {
-      request = await Permission.storage.request();
+      request = await Permission.photos.request();
     }
     storagePermission.value = request;
     if (request == PermissionStatus.granted) {
