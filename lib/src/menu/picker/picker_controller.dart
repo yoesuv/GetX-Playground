@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class PickerController extends GetxController {
   final storagePermission = Rx<PermissionStatus>(PermissionStatus.denied);
@@ -11,11 +12,32 @@ class PickerController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    storagePermission.value = await Permission.storage.status;
+    if (Platform.isAndroid) {
+      final androidInfo = await DeviceInfoPlugin().androidInfo;
+      final sdkInt = androidInfo.version.sdkInt;
+      if (sdkInt < 33) {
+        storagePermission.value = await Permission.storage.status;
+      } else {
+        storagePermission.value = await Permission.photos.status;
+      }
+    } else {
+      storagePermission.value = await Permission.photos.status;
+    }
   }
 
   void requestPermission() async {
-    final request = await Permission.storage.request();
+    late PermissionStatus request;
+    if (Platform.isAndroid) {
+      final androidInfo = await DeviceInfoPlugin().androidInfo;
+      final sdkInt = androidInfo.version.sdkInt;
+      if (sdkInt < 33) {
+        request = await Permission.storage.request();
+      } else {
+        request = await Permission.photos.request();
+      }
+    } else {
+      request = await Permission.photos.request();
+    }
     storagePermission.value = request;
     if (request == PermissionStatus.granted) {
       openGallery();

@@ -18,11 +18,10 @@ class DownloadScreen extends GetView<DownloadController> {
         body: SafeArea(
           child: Column(
             children: [
-              const SizedBox(height: 12),
+              const SizedBox(height: 24),
               const Text('Download File .pdf'),
               const SizedBox(height: 12),
-              Text('Permission : ${controller.storagePermission.value.name}'),
-              const SizedBox(height: 12),
+              _textPermission(controller),
               Center(
                 child: MyButton(
                   label: 'Download pdf',
@@ -55,5 +54,22 @@ class DownloadScreen extends GetView<DownloadController> {
         ),
       ),
     );
+  }
+
+  Widget _textPermission(DownloadController controller) {
+    if (controller.sdkInt.value >= 33) {
+      return Container();
+    } else {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Permission : ${controller.storagePermission.value.name}',
+          ),
+          const SizedBox(height: 12),
+        ],
+      );
+    }
   }
 }
