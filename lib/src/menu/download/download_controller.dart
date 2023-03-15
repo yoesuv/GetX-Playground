@@ -18,11 +18,15 @@ enum DownloadChannel {
 
 class DownloadController extends GetxController {
   final storagePermission = Rx<PermissionStatus>(PermissionStatus.denied);
+  final sdkInt = Rx<int>(0);
 
   @override
   void onInit() async {
     super.onInit();
     storagePermission.value = await Permission.storage.status;
+    final androidInfo = await DeviceInfoPlugin().androidInfo;
+    final sdkInt = androidInfo.version.sdkInt;
+    this.sdkInt.value = sdkInt;
   }
 
   void requestPermission(DownloadChannel channel) async {
