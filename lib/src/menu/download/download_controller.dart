@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
@@ -25,10 +26,16 @@ class DownloadController extends GetxController {
   }
 
   void requestPermission(DownloadChannel channel) async {
-    final request = await Permission.storage.request();
-    storagePermission.value = request;
-    if (request == PermissionStatus.granted) {
+    final androidInfo = await DeviceInfoPlugin().androidInfo;
+    final sdkInt = androidInfo.version.sdkInt;
+    if (sdkInt >= 33) {
       downloadFile(channel);
+    } else {
+      final request = await Permission.storage.request();
+      storagePermission.value = request;
+      if (request == PermissionStatus.granted) {
+        downloadFile(channel);
+      }
     }
   }
 
