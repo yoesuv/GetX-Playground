@@ -1,6 +1,6 @@
 ## Personal GetX Playground ##
 
-Personal Flutter GetX Playground.  Download apk file [here](https://www.dropbox.com/s/yk5ha81hp9j8oe6)
+Personal Flutter GetX Playground.  Download apk file [here](https://www.dropbox.com/s/npyfxybc5g2peyl)
 
 ```
 Flutter 3.7.7 • channel stable • https://github.com/flutter/flutter.git
@@ -12,12 +12,12 @@ Tools • Dart 2.19.4 • DevTools 2.20.1
 #### Screenshot Android ####
 | ![](https://i.imgur.com/ufe83A2.png) | ![](https://i.imgur.com/sHkjXIP.png) | ![](https://images2.imgbox.com/6f/d6/HWdIbrF2_o.png) | ![](https://i.imgur.com/UMGq7Bb.png) |
 | :---: | :---: | :---: | :---: |
-| ![](https://images2.imgbox.com/a1/76/uD4j9ZX8_o.png) | - | ![](https://images2.imgbox.com/cd/44/9TmBcZQm_o.png) | ![](https://i.imgur.com/k4leFlA.png) |
+| ![](https://images2.imgbox.com/a1/76/uD4j9ZX8_o.png) | ![](https://i.imgur.com/VkfgsOK.png) | ![](https://images2.imgbox.com/cd/44/9TmBcZQm_o.png) | ![](https://i.imgur.com/k4leFlA.png) |
 
 #### Screenshot iOS ####
 | ![](https://i.imgur.com/mIkoMCx.png) | ![](https://i.imgur.com/PRlvmTI.png) | ![](https://images2.imgbox.com/ea/18/xdFAYKTl_o.png) | ![](https://i.imgur.com/tXbLkoq.png) |
 | :---: | :---: | :---: | :---: |
-| ![](https://images2.imgbox.com/00/55/Dp9v6xeb_o.png) | - | ![](https://images2.imgbox.com/3e/f4/9i1o0xI3_o.png) | ![](https://i.imgur.com/ZsKkHlN.png) |
+| ![](https://images2.imgbox.com/00/55/Dp9v6xeb_o.png) | ![](https://i.imgur.com/ntG5ZuN.png) | ![](https://images2.imgbox.com/3e/f4/9i1o0xI3_o.png) | ![](https://i.imgur.com/ZsKkHlN.png) |
 
 ### Libraries ###
 - [Android Alarm Manager Plus](https://pub.dev/packages/android_alarm_manager_plus)
