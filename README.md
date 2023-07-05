@@ -1,12 +1,12 @@
 ## Personal GetX Playground ##
 
-Personal Flutter GetX Playground.  Download apk file [here](https://www.dropbox.com/s/npyfxybc5g2peyl)
+Personal Flutter GetX Playground.  Download apk file [here](https://www.dropbox.com/s/1vqcmw2c1yplg3t)
 
 ```
-Flutter 3.7.7 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 2ad6cd72c0 (7 days ago) • 2023-03-08 09:41:59 -0800
-Engine • revision 1837b5be5f
-Tools • Dart 2.19.4 • DevTools 2.20.1
+Flutter 3.10.5 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 796c8ef792 (3 weeks ago) • 2023-06-13 15:51:02 -0700
+Engine • revision 45f6e00911
+Tools • Dart 3.0.5 • DevTools 2.23.1
 ```
 
 #### Screenshot Android ####
@@ -23,11 +23,11 @@ Tools • Dart 2.19.4 • DevTools 2.20.1
 - [Android Alarm Manager Plus](https://pub.dev/packages/android_alarm_manager_plus)
 - [Device Info Plus](https://pub.dev/packages/device_info_plus)
 - [Dio](https://pub.dev/packages/dio)
-- [Flutter Downloader](https://pub.dev/packages/flutter_downloader)
 - [Flutter Local Notifications](https://pub.dev/packages/flutter_local_notifications)
 - [GetX](https://pub.dev/packages/get)
 - [Get Storage](https://pub.dev/packages/get_storage)
 - [Image Picker](https://pub.dev/packages/image_picker)
+- [Path](https://pub.dev/packages/path)
 - [Path Provider](https://pub.dev/packages/path_provider)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
 - [Shared Preferences](https://pub.dev/packages/shared_preferences)

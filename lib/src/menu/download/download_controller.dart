@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get/get.dart';
 import 'package:my_getx_playground/src/core/data/constants.dart';
 import 'package:my_getx_playground/src/utils/app_snackbar.dart';
@@ -63,12 +62,7 @@ class DownloadController extends GetxController {
         debugPrint('DownloadController # final file name : $strFileName');
         if (channel == DownloadChannel.downloader) {
           // download using flutter downloader
-          await FlutterDownloader.enqueue(
-            url: linkPdf,
-            savedDir: directory?.path ?? '',
-            showNotification: true,
-            fileName: strFileName,
-          );
+          snackBarError('Download', 'No Downloader');
         } else {
           // download using dio
           Dio().download(
