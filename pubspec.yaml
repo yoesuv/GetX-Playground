@@ -43,7 +43,7 @@ dependencies:
   image_picker: ^1.0.0
   path: ^1.8.3
   path_provider: ^2.0.15
-  permission_handler: ^10.4.1
+  permission_handler: ^11.1.0
   shared_preferences: ^2.2.2
 
 dev_dependencies:
