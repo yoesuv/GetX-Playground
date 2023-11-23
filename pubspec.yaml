@@ -40,7 +40,7 @@ dependencies:
   flutter_local_notifications: ^13.0.0
   get: ^4.6.5
   get_storage: ^2.1.1
-  image_picker: ^1.0.0
+  image_picker: ^1.0.4
   path: ^1.8.3
   path_provider: ^2.0.15
   permission_handler: ^11.1.0
