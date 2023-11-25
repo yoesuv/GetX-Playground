@@ -10,7 +10,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       enableLog: true,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.teal,
+        ),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
           elevation: 4,
@@ -24,7 +26,19 @@ class MyApp extends StatelessWidget {
             fontSize: 20,
             fontWeight: FontWeight.w500,
           ),
-        )
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.teal,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        dialogTheme: DialogTheme(
+          surfaceTintColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
       ),
       initialRoute: '/',
       getPages: appRoute,
