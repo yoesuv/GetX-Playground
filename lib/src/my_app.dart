@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
-          elevation: 8,
+          elevation: 4,
+          shadowColor: Colors.black,
           backgroundColor: Colors.teal,
           iconTheme: IconThemeData(
             color: Colors.white,
