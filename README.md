@@ -1,12 +1,12 @@
 ## Personal GetX Playground ##
 
-Personal Flutter GetX Playground.  Download apk file [here](https://www.dropbox.com/s/1vqcmw2c1yplg3t)
+Personal Flutter GetX Playground.  Download apk file [here](https://e.pcloud.link/publink/show?code=XZTHIDZCQEDPTYOfUymPkscNgjIDbCTUhqV)
 
 ```
-Flutter 3.10.5 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 796c8ef792 (3 weeks ago) • 2023-06-13 15:51:02 -0700
-Engine • revision 45f6e00911
-Tools • Dart 3.0.5 • DevTools 2.23.1
+Flutter 3.16.0 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision db7ef5bf9f (2 weeks ago) • 2023-11-15 11:25:44 -0800
+Engine • revision 74d16627b9
+Tools • Dart 3.2.0 • DevTools 2.28.2
 ```
 
 #### Screenshot Android ####
